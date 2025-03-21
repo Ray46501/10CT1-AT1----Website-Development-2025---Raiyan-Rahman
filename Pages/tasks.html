@@ -3,26 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raiyan's Study Hub - Subjects</title>
+    <title>Task Master - My Tasks</title>
     <link rel="stylesheet" href="../styles/styles.css">
     <script src="../scripts/script.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>Tasks</h1>
+        <h1>My Tasks</h1>
         <hr>
         <nav>
             <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="tasks.html">My Tasks</a></li>
-                <li><a href="add-task.html">Add Task</a></li>
-                <li><a href="completed-tasks.html">Completed Tasks</a></li>
-                <li><a href="settings.html">Settings</a></li>
+                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="tasks.html"><i class="fas fa-tasks"></i> My Tasks</a></li>
+                <li><a href="add-task.html"><i class="fas fa-plus-circle"></i> Add Task</a></li>
+                <li><a href="completed-tasks.html"><i class="fas fa-check-circle"></i> Completed Tasks</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
             </ul>
-        </nav>
+        </nav>        
     </header>
     <hr>
+
+    <h2>Welcome to Task Master</h2>
+    <p>Stay organized, boost productivity, and take control of your daily tasks with ease!</p>
+    <hr>
+    <main>
+        <h3>Explore Task Master Features</h3>
     
+        <div class="features-container">
+            <div class="features-box">
+                <h4><i class="fas fa-tasks"></i> My Tasks</h4>
+                <p>View and manage all your pending tasks. Mark tasks as complete or delete them when no longer needed.</p>
+                <a href="tasks.html" class="btn btn-primary">Go to My Tasks</a>
+            </div>
+    
+            <div class="features-box">
+                <h4><i class="fas fa-plus-circle"></i> Add Task</h4>
+                <p>Add new tasks with descriptions, due dates, and priorities to stay on top of your goals.</p>
+                <a href="add-task.html" class="btn btn-primary">Go to Add Task</a>
+            </div>
+    
+            <div class="features-box">
+                <h4><i class="fas fa-check-circle"></i> Completed Tasks</h4>
+                <p>View a list of all the tasks you have completed. Restore them if needed or remove them permanently.</p>
+                <a href="completed-tasks.html" class="btn btn-primary">Go to Completed Tasks</a>
+            </div>
+    
+            <div class="features-box">
+                <h4><i class="fas fa-cog"></i> Settings</h4>
+                <p>Customize Task Master to fit your needs! Change themes, sorting options, and reset your data.</p>
+                <a href="settings.html" class="btn btn-primary">Go to Settings</a>
+            </div>
+        </div>
+    </main>
+    
+
 </body>
 </html>

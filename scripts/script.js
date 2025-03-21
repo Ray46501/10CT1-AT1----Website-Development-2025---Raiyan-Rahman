@@ -1,10 +1,26 @@
-function uploadFile() {
-    let fileInput = document.getElementById("fileUpload");
-    let message = document.getElementById("uploadMessage");
-    
-    if (fileInput.files.length > 0) {
-        message.textContent = "File uploaded: " + fileInput.files[0].name;
-    } else {
-        message.textContent = "Please select a file.";
+document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+    const navDivider = document.getElementById("nav-divider");
+
+    menuToggle.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+        updateDividerVisibility();
+    });
+
+    function updateDividerVisibility() {
+        if (navLinks.classList.contains("active") || window.innerWidth <= 768) {
+            navDivider.style.display = "none";
+        } else {
+            navDivider.style.display = "block";
+        }
     }
-}
+
+    function checkScreenSize() {
+        updateDividerVisibility();
+    }
+
+    checkScreenSize();
+    
+    window.addEventListener("resize", checkScreenSize);
+});

@@ -17,10 +17,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function checkScreenSize() {
+        if (window.innerWidth > 768) {
+            navLinks.classList.remove("active");
+        }
         updateDividerVisibility();
     }
 
-    checkScreenSize();
-    
+    updateDividerVisibility();
     window.addEventListener("resize", checkScreenSize);
+
+    const darkModeToggle = document.getElementById("dark-mode-toggle");
+
+    const savedDarkMode = localStorage.getItem("darkMode") === "true";
+
+    if (savedDarkMode) {
+        document.body.classList.add("dark-mode");
+        darkModeToggle.checked = true;
+    }
+
+    darkModeToggle.addEventListener("change", () => {
+        if (darkModeToggle.checked) {
+            document.body.classList.add("dark-mode");
+            localStorage.setItem("darkMode", "true");
+        } else {
+            document.body.classList.remove("dark-mode");
+            localStorage.setItem("darkMode", "false");
+        }
+    });
 });

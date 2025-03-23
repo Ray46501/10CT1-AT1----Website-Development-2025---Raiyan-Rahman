@@ -3,26 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raiyan's Study Hub - Upload</title>
+    <title>Task Master - Settings</title>
     <link rel="stylesheet" href="../styles/styles.css">
     <script src="../scripts/script.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <header>
         <h1>Settings</h1>
         <hr>
         <nav>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="tasks.html">My Tasks</a></li>
-                <li><a href="add-task.html">Add Task</a></li>
-                <li><a href="completed-tasks.html">Completed Tasks</a></li>
-                <li><a href="settings.html">Settings</a></li>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="tasks.html"><i class="fas fa-tasks"></i> My Tasks</a></li>
+                <li><a href="add-task.html"><i class="fas fa-plus-circle"></i> Add Task</a></li>
+                <li><a href="completed-tasks.html"><i class="fas fa-check-circle"></i> Completed Tasks</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
             </ul>
         </nav>
     </header>
-    <hr>
     
+    <hr id="nav-divider">
+
+    <main>
+        <h2>Customize Your Experience</h2>
+        <hr>
+        <div class="settings-container">
+            <div class="settings-item">
+                <label for="dark-mode-toggle"><i class="fas fa-moon"></i> Dark Mode:</label>
+                <input type="checkbox" id="dark-mode-toggle">
+            </div>
+            <div class="settings-item">
+                <label for="task-sorting"><i class="fas fa-sort"></i> Sort Tasks By:</label>
+                <select id="task-sorting">
+                    <option value="priority">Priority</option>
+                    <option value="due-date">Due Date</option>
+                    <option value="creation-date">Creation Date</option>
+                </select>
+            </div>
+            <div class="settings-item">
+                <button id="reset-data" class="btn btn-danger"><i class="fas fa-trash"></i> Reset All Data</button>
+            </div>
+        </div>
+    </main>
+    <hr>
+    <p class="footer">Task Master by Raiyan Rahman</p>
 </body>
 </html>

@@ -11,7 +11,7 @@ nav ul {
 
 nav ul li {
   display: inline-block;
-  margin: 0 90px; 
+  margin: 0 90px;
 }
 
 header {
@@ -47,6 +47,7 @@ main {
 }
 
 .menu-toggle {
+  z-index: 1001;
   display: none;
   font-size: 24px;
   cursor: pointer;
@@ -70,6 +71,7 @@ h2, h3, p {
   }
 
   .nav-links {
+    z-index: 1000;
     background-color: aliceblue;
     display: none;
     flex-direction: column;
@@ -81,7 +83,7 @@ h2, h3, p {
     text-align: center;
   }
 
-  .dark-mode .nav-links{
+  .dark-mode .nav-links {
     background-color: #2c2c2c;
   }
 
@@ -92,9 +94,14 @@ h2, h3, p {
   .nav-links li {
     margin: 10px 0;
   }
+
+  #nav-divider {
+    display: none;
+  }
 }
 
 .settings-container {
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,6 +110,7 @@ h2, h3, p {
 }
 
 .settings-item {
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 15px;
@@ -173,4 +181,3 @@ body.dark-mode hr {
 .dark-mode .features-box h4 {
     color: #fff;
 }
-

@@ -3,25 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raiyan's Study Hub - Resources</title>
+    <title>Task Master - Add Task</title>
     <link rel="stylesheet" href="../styles/styles.css">
+    <script src="../scripts/tasks.js" defer></script>
     <script src="../scripts/script.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <header>
         <h1>Add Task</h1>
         <hr>
         <nav>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="tasks.html">My Tasks</a></li>
-                <li><a href="add-task.html">Add Task</a></li>
-                <li><a href="completed-tasks.html">Completed Tasks</a></li>
-                <li><a href="settings.html">Settings</a></li>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="tasks.html"><i class="fas fa-tasks"></i> My Tasks</a></li>
+                <li><a href="add-task.html"><i class="fas fa-plus-circle"></i> Add Task</a></li>
+                <li><a href="completed-tasks.html"><i class="fas fa-check-circle"></i> Completed Tasks</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
             </ul>
         </nav>
     </header>
+    
+    <hr id="nav-divider">
+    <h2>Create a New Task</h2>
+    <p>Quickly create new tasks with details like title, description, due date, and priority to keep your goals on track.</p>
     <hr>
+    <main id="add-task-container">
+        
+        <form id="add-task-form">
+            <div class="form-group">
+                <label for="task-title">Task Title:</label>
+                <input type="text" id="task-title" name="task-title" class="form-control" placeholder="Enter task title" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="task-desc">Task Description:</label>
+                <textarea id="task-desc" name="task-desc" class="form-control" rows="4" placeholder="Enter task description" required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="due-date">Due Date:</label>
+                <input type="date" id="due-date" name="due-date" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="priority">Priority:</label>
+                <select id="priority" name="priority" class="form-control" required>
+                    <option value="" disabled selected>Select priority</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Add Task</button>
+        </form>
+    </main>
+    <hr>
+    <p class="footer">Task Master by Raiyan Rahman</p>
 </body>
 </html>

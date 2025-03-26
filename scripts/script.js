@@ -27,29 +27,29 @@ document.addEventListener("DOMContentLoaded", function () {
         updateDividerVisibility();
     }
 
-    const savedDarkMode = localStorage.getItem("darkMode") === "true";
-    if (savedDarkMode) {
-        document.body.classList.add("dark-mode");
-        darkModeToggle.checked = true;
+    if (darkModeToggle) {
+        const savedDarkMode = localStorage.getItem("darkMode") === "true";
+        if (savedDarkMode) {
+            document.body.classList.add("dark-mode");
+            darkModeToggle.checked = true;
+        }
+
+        darkModeToggle.addEventListener("change", () => {
+            if (darkModeToggle.checked) {
+                document.body.classList.add("dark-mode");
+                localStorage.setItem("darkMode", "true");
+            } else {
+                document.body.classList.remove("dark-mode");
+                localStorage.setItem("darkMode", "false");
+            }
+        });
     }
 
-    darkModeToggle.addEventListener("change", () => {
-        if (darkModeToggle.checked) {
-            document.body.classList.add("dark-mode");
-            localStorage.setItem("darkMode", "true");
-        } else {
-            document.body.classList.remove("dark-mode");
-            localStorage.setItem("darkMode", "false");
-        }
-    });
-
     checkScreenSize();
-
     window.addEventListener("resize", checkScreenSize);
 
     menuToggle.addEventListener("click", function () {
         navLinks.classList.toggle("active");
-        updateDividerVisibility();
         toggleMenuIcon();
     });
 });

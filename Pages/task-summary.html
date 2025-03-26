@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Master - Task Summary</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script src="../scripts/script.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Task Summary</h1>
+        <hr>
+        <nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="tasks.html"><i class="fas fa-tasks"></i> My Tasks</a></li>
+                <li><a href="add-task.html"><i class="fas fa-plus-circle"></i> Add Task</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <hr id="nav-divider">
+
+    <main>
+        <div class="settings-container" style="display: none;">
+            <div class="settings-item">
+                <label for="dark-mode-toggle"><i class="fas fa-moon"></i> Dark Mode:</label>
+                <input type="checkbox" id="dark-mode-toggle">
+            </div>
+        </div>
+        <h2>Task Overview</h2>
+        <p>Here’s an overview of your tasks to help you stay organized and on track.</p>
+        <hr>
+        
+        <div id="summary-container">
+            <p>Total Tasks: <span id="total-tasks"></span></p>
+            <p>Pending Tasks: <span id="pending-tasks"></span></p>
+            <p>Overdue Tasks: <span id="overdue-tasks"></span></p>
+        </div>
+        
+        <h3>Overdue Tasks</h3>
+        <ul id="overdue-task-list" style="list-style-type: none; padding-left: 0;"></ul>
+    </main>
+    <hr>
+    <p class="footer">Task Master by Raiyan Rahman</p>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            const totalTasks = tasks.length;
+            const pendingTasks = tasks.filter(task => !task.completed).length;
+            const overdueTasks = tasks.filter(task => !task.completed && new Date(task.dueDate) < new Date());
+            
+            document.getElementById('total-tasks').textContent = totalTasks;
+            document.getElementById('pending-tasks').textContent = pendingTasks;
+            document.getElementById('overdue-tasks').textContent = overdueTasks.length;
+            
+            const overdueTaskList = document.getElementById('overdue-task-list');
+            if (overdueTasks.length > 0) {
+                overdueTasks.forEach(task => {
+                    const taskItem = document.createElement('li');
+                    taskItem.textContent = `${task.title} (Due: ${task.dueDate})`;
+                    overdueTaskList.appendChild(taskItem);
+                });
+            } else {
+                const noOverdueMessage = document.createElement('li');
+                noOverdueMessage.textContent = 'No overdue tasks';
+                overdueTaskList.appendChild(noOverdueMessage);
+            }
+        });
+    </script>
+</body>
+</html>

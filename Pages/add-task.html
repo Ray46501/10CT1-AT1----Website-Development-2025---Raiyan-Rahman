@@ -18,11 +18,10 @@
             <div class="menu-toggle" id="menu-toggle">
                 <i class="fas fa-bars"></i>
             </div>
-            <ul class="nav-links" id="nav-links">
+            <ul class="nav-links">
                 <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="tasks.html"><i class="fas fa-tasks"></i> My Tasks</a></li>
-                <li><a href="add-task.html"><i class="fas fa-plus-circle"></i> Add Task</a></li>
-                <li><a href="completed-tasks.html"><i class="fas fa-check-circle"></i> Completed Tasks</a></li>
+                <li><a href="task-summary.html"><i class="fas fa-chart-simple"></i> My Task Summary</a></li>
                 <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
             </ul>
         </nav>
@@ -33,26 +32,31 @@
     <p>Quickly create new tasks with details like title, description, due date, and priority to keep your goals on track.</p>
     <hr>
     <main id="add-task-container">
-        
+        <div class="settings-container" style="display: none;">
+            <div class="settings-item">
+                <label for="dark-mode-toggle"><i class="fas fa-moon"></i> Dark Mode:</label>
+                <input type="checkbox" id="dark-mode-toggle">
+            </div>
+        </div>
         <form id="add-task-form">
             <div class="form-group">
                 <label for="task-title">Task Title:</label>
-                <input type="text" id="task-title" name="task-title" class="form-control" placeholder="Enter task title" required>
+                <input style="background-color: rgba(174, 192, 255, 0.829);" type="text" id="task-title" name="task-title" class="form-control" placeholder="Enter task title" required>
             </div>
             
             <div class="form-group">
                 <label for="task-desc">Task Description:</label>
-                <textarea id="task-desc" name="task-desc" class="form-control" rows="4" placeholder="Enter task description" required></textarea>
+                <textarea style="background-color: rgba(174, 192, 255, 0.829);" id="task-desc" name="task-desc" class="form-control" rows="4" placeholder="Enter task description" required></textarea>
             </div>
             
             <div class="form-group">
                 <label for="due-date">Due Date:</label>
-                <input type="date" id="due-date" name="due-date" class="form-control" required>
+                <input style="background-color: rgba(174, 192, 255, 0.829);" type="date" id="due-date" name="due-date" class="form-control" required>
             </div>
             
             <div class="form-group">
                 <label for="priority">Priority:</label>
-                <select id="priority" name="priority" class="form-control" required>
+                <select style="background-color: rgba(174, 192, 255, 0.829);" id="priority" name="priority" class="form-control" required>
                     <option value="" disabled selected>Select priority</option>
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>

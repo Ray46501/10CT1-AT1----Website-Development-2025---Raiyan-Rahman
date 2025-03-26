@@ -18,11 +18,10 @@
             <div class="menu-toggle" id="menu-toggle">
                 <i class="fas fa-bars"></i>
             </div>
-            <ul class="nav-links" id="nav-links">
+            <ul class="nav-links">
                 <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="tasks.html"><i class="fas fa-tasks"></i> My Tasks</a></li>
                 <li><a href="add-task.html"><i class="fas fa-plus-circle"></i> Add Task</a></li>
-                <li><a href="completed-tasks.html"><i class="fas fa-check-circle"></i> Completed Tasks</a></li>
+                <li><a href="task-summary.html"><i class="fas fa-chart-simple"></i> My Task Summary</a></li>
                 <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
             </ul>
         </nav>
@@ -31,14 +30,18 @@
     <hr id="nav-divider">
 
     <main>
-        <div>
-            <h2>Your Tasks</h2>
-            <p>View, manage, and track all your pending tasks in one place. Easily update, mark as complete, or delete tasks to stay organized and productive.</p>
-            <hr>
-            <ul id="task-list">
-                
-            </ul>
-            <p id="no-tasks-message">No tasks available. <a href="add-task.html">Add some!</a></p>
+        <div class="settings-container" style="display: none;">
+            <div class="settings-item">
+                <label for="dark-mode-toggle"><i class="fas fa-moon"></i> Dark Mode:</label>
+                <input type="checkbox" id="dark-mode-toggle">
+            </div>
+        </div>
+        <h2>Your Tasks</h2>
+        <p>View, manage, and track all your pending tasks in one place. Easily update, mark as complete, or delete tasks to stay organized and productive.</p>
+        <hr>
+        <div class="task-list-container">
+            <ul id="task-list"></ul>
+            <p id="no-tasks-message" style="display:block;">No tasks available. <a href="add-task.html">Add Some</a></p>
         </div>
     </main>
     <hr>

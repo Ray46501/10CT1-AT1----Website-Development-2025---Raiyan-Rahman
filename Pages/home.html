@@ -17,11 +17,10 @@
             <div class="menu-toggle" id="menu-toggle">
                 <i class="fas fa-bars"></i>
             </div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+            <ul class="nav-links">
                 <li><a href="tasks.html"><i class="fas fa-tasks"></i> My Tasks</a></li>
                 <li><a href="add-task.html"><i class="fas fa-plus-circle"></i> Add Task</a></li>
-                <li><a href="completed-tasks.html"><i class="fas fa-check-circle"></i> Completed Tasks</a></li>
+                <li><a href="task-summary.html"><i class="fas fa-chart-simple"></i> My Task Summary</a></li>
                 <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
             </ul>
         </nav>
@@ -32,41 +31,41 @@
     <main>
         <h2>Welcome to Task Master</h2>
         <p>Stay organized, boost productivity, and take control of your daily tasks with ease!</p>
-        
         <hr>
-
         <h3>Explore Task Master Features</h3>
-    
+        <div class="settings-container" style="display: none;">
+            <div class="settings-item">
+                <label for="dark-mode-toggle"><i class="fas fa-moon"></i> Dark Mode:</label>
+                <input type="checkbox" id="dark-mode-toggle">
+            </div>
+        </div>
         <div class="features-container">
             <div class="features-box">
                 <h4><i class="fas fa-tasks"></i> My Tasks</h4>
                 <p>View and manage all pending tasks. Mark tasks as complete or delete them when no longer needed.</p>
                 <a href="tasks.html" class="btn btn-primary">Go to My Tasks</a>
             </div>
-    
+        
             <div class="features-box">
                 <h4><i class="fas fa-plus-circle"></i> Add Task</h4>
                 <p>Add new tasks with descriptions, due dates, and priorities to stay on top of your goals.</p>
                 <a href="add-task.html" class="btn btn-primary">Go to Add Task</a>
             </div>
-    
+        
             <div class="features-box">
                 <h4><i class="fas fa-check-circle"></i> Completed Tasks</h4>
                 <p>View a list of all the tasks you have completed. Restore them if needed or remove them permanently.</p>
                 <a href="completed-tasks.html" class="btn btn-primary">Go to Completed Tasks</a>
             </div>
-    
+        
             <div class="features-box">
                 <h4><i class="fas fa-cog"></i> Settings</h4>
                 <p>Customize Task Master to fit your needs! Change themes, sorting options, and reset your data.</p>
                 <a href="settings.html" class="btn btn-primary">Go to Settings</a>
             </div>
         </div>
-
-        
     </main>
     <hr>
     <p class="footer">Task Master by Raiyan Rahman</p>
-
 </body>
 </html>

@@ -45,6 +45,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    document.getElementById('reset-data').addEventListener('click', function() {
+        if (confirm('Are you sure you want to reset all data? This action cannot be undone.')) {
+            localStorage.clear();
+            alert('All data has been reset.');
+            window.location.href = 'home.html';
+        }
+    });
+
     checkScreenSize();
     window.addEventListener("resize", checkScreenSize);
 
@@ -52,4 +60,17 @@ document.addEventListener("DOMContentLoaded", function () {
         navLinks.classList.toggle("active");
         toggleMenuIcon();
     });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    const totalTasks = tasks.length;
+    const completedTasks = tasks.filter(task => task.completed).length;
+    const pendingTasks = totalTasks - completedTasks;
+    const overdueTasks = tasks.filter(task => !task.completed && new Date(task.dueDate) < new Date()).length;
+
+    document.getElementById('total-tasks').textContent = totalTasks;
+    document.getElementById('completed-tasks').textContent = completedTasks;
+    document.getElementById('pending-tasks').textContent = pendingTasks;
+    document.getElementById('overdue-tasks').textContent = overdueTasks;
 });

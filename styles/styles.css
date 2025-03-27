@@ -32,14 +32,6 @@ nav ul {
   padding: 0;
 }
 
-nav ul li {
-  margin: 0 90px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #007bff;
-}
 
 nav ul li a:hover {
   color: #0056b3;
@@ -55,6 +47,14 @@ nav ul li a:hover {
   z-index: 1001;
 }
 
+.nav-links li {
+  border: 1px solid #007bff;
+    border-radius: 8px; 
+    margin: 5px 10px; 
+    padding: 10px;
+    background-color: #f8f9fa; 
+}
+
 @media screen and (max-width: 1200px) {
   nav ul li {
     margin: 0 60px;
@@ -63,7 +63,7 @@ nav ul li a:hover {
 
 @media screen and (max-width: 1024px) {
   nav ul li {
-    margin: 0 40px; 
+    margin: 0 40px;
   }
 }
 
@@ -96,9 +96,12 @@ nav ul li a:hover {
   .nav-links.active {
     display: flex;
   }
+  
+  
 
   .nav-links li {
-    margin: 10px 0;
+
+    margin: 10px 20px 10px 20px;
   }
 
   #nav-divider {
@@ -217,31 +220,6 @@ nav ul li a:hover {
   color: rgba(174, 192, 255, 0.829);
 }
 
-.add-task-form h2 {
-  margin-bottom: 20px;
-}
-
-.add-task-form input,
-.add-task-form textarea,
-.add-task-form button {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.add-task-form button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.add-task-form button:hover {
-  background-color: #0056b3;
-}
-
 body.dark-mode {
   background-color: #121212;
   color: #ffffff;
@@ -277,11 +255,17 @@ body.dark-mode .features-box a:hover {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
-.dark-mode #task-list li{
+.dark-mode #task-list li {
   background-color: #1e1e1e;
   color: #ffffff;
 }
 
-#completed-task-list {
-  list-style: none ;
+.dark-mode .nav-links li {
+  border: 1px solid #03dac5; 
+  background-color: #1e1e1e; 
 }
+
+#completed-task-list {
+  list-style: none;
+}
+

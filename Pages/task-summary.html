@@ -8,16 +8,54 @@
     <script src="../scripts/script.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .progress-bar-container {
+            width: 50%; /* Restrict width to 50% of the page */
+            margin: 10px auto; /* Center the progress bar */
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            font-size: 12px;
+        }
+
+        .progress-fill.high {
+            background-color: #e74c3c; 
+        }
+
+        .progress-fill.medium {
+            background-color: #f1c40f; 
+        }
+
+        .progress-fill.low {
+            background-color: #2ecc71;
+        }
+
+        .progress-fill.overdue {
+            background-color: #3498db; 
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Task Summary</h1>
         <hr>
         <nav>
-            <div class="menu-toggle" id="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-links">
+            <div id="menu-toggle" class="menu-toggle"><i class="fas fa-bars"></i></div>
+            <ul id="nav-links" class="nav-links">
                 <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="tasks.html"><i class="fas fa-tasks"></i> My Tasks</a></li>
                 <li><a href="add-task.html"><i class="fas fa-plus-circle"></i> Add Task</a></li>
@@ -25,7 +63,7 @@
             </ul>
         </nav>
     </header>
-    
+
     <hr id="nav-divider">
 
     <main>
@@ -41,8 +79,30 @@
         
         <div id="summary-container">
             <p>Total Tasks: <span id="total-tasks"></span></p>
-            <p>Pending Tasks: <span id="pending-tasks"></span></p>
-            <p>Overdue Tasks: <span id="overdue-tasks"></span></p>
+            <p>Overdue Tasks: <span id="overdue-tasks"></span> (<span id="overdue-percent"></span>%)</p>
+            <div class="progress-bar-container">
+                <div class="progress-bar">
+                    <div id="overdue-progress" class="progress-fill overdue"></div>
+                </div>
+            </div>
+            <p>High Priority Tasks: <span id="high-priority-tasks"></span> (<span id="high-priority-percent"></span>%)</p>
+            <div class="progress-bar-container">
+                <div class="progress-bar">
+                    <div id="high-priority-progress" class="progress-fill high"></div>
+                </div>
+            </div>
+            <p>Medium Priority Tasks: <span id="medium-priority-tasks"></span> (<span id="medium-priority-percent"></span>%)</p>
+            <div class="progress-bar-container">
+                <div class="progress-bar">
+                    <div id="medium-priority-progress" class="progress-fill medium"></div>
+                </div>
+            </div>
+            <p>Low Priority Tasks: <span id="low-priority-tasks"></span> (<span id="low-priority-percent"></span>%)</p>
+            <div class="progress-bar-container">
+                <div class="progress-bar">
+                    <div id="low-priority-progress" class="progress-fill low"></div>
+                </div>
+            </div>
         </div>
         
         <h3>Overdue Tasks</h3>
@@ -55,12 +115,36 @@
         document.addEventListener("DOMContentLoaded", function() {
             const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
             const totalTasks = tasks.length;
-            const pendingTasks = tasks.filter(task => !task.completed).length;
             const overdueTasks = tasks.filter(task => !task.completed && new Date(task.dueDate) < new Date());
             
+            const highPriorityTasks = tasks.filter(task => task.priority === "high").length;
+            const mediumPriorityTasks = tasks.filter(task => task.priority === "medium").length;
+            const lowPriorityTasks = tasks.filter(task => task.priority === "low").length;
+            
+            const calculatePercentage = (count) => totalTasks > 0 ? ((count / totalTasks) * 100).toFixed(0) : 0;
+
+            const updateProgressBar = (id, percentage) => {
+                const progressBar = document.getElementById(id);
+                progressBar.style.width = `${percentage}%`;
+                progressBar.textContent = `${percentage}%`;
+            };
+
             document.getElementById('total-tasks').textContent = totalTasks;
-            document.getElementById('pending-tasks').textContent = pendingTasks;
             document.getElementById('overdue-tasks').textContent = overdueTasks.length;
+            document.getElementById('overdue-percent').textContent = calculatePercentage(overdueTasks.length);
+
+            document.getElementById('high-priority-tasks').textContent = highPriorityTasks;
+            document.getElementById('medium-priority-tasks').textContent = mediumPriorityTasks;
+            document.getElementById('low-priority-tasks').textContent = lowPriorityTasks;
+
+            document.getElementById('high-priority-percent').textContent = calculatePercentage(highPriorityTasks);
+            document.getElementById('medium-priority-percent').textContent = calculatePercentage(mediumPriorityTasks);
+            document.getElementById('low-priority-percent').textContent = calculatePercentage(lowPriorityTasks);
+
+            updateProgressBar('overdue-progress', calculatePercentage(overdueTasks.length));
+            updateProgressBar('high-priority-progress', calculatePercentage(highPriorityTasks));
+            updateProgressBar('medium-priority-progress', calculatePercentage(mediumPriorityTasks));
+            updateProgressBar('low-priority-progress', calculatePercentage(lowPriorityTasks));
             
             const overdueTaskList = document.getElementById('overdue-task-list');
             if (overdueTasks.length > 0) {

@@ -1,3 +1,4 @@
+/* General text alignment and margins */
 h1, h2, h3, p {
   text-align: center;
   margin: 0;
@@ -13,6 +14,7 @@ main {
   text-align: center;
 }
 
+/* Footer styles */
 .footer {
   text-align: center;
   font-weight: bold;
@@ -25,13 +27,13 @@ main {
   color: rgba(174, 192, 255, 0.829);
 }
 
+/* Navigation bar styles */
 nav ul {
   display: flex;
   justify-content: center;
   list-style: none;
   padding: 0;
 }
-
 
 nav ul li a:hover {
   color: #0056b3;
@@ -49,12 +51,13 @@ nav ul li a:hover {
 
 .nav-links li {
   border: 1px solid #007bff;
-    border-radius: 8px; 
-    margin: 5px 10px; 
-    padding: 10px;
-    background-color: #f8f9fa; 
+  border-radius: 8px;
+  margin: 5px 40px;
+  padding: 10px;
+  background-color: #f8f9fa;
 }
 
+/* Responsiveness */
 @media screen and (max-width: 1200px) {
   nav ul li {
     margin: 0 60px;
@@ -96,12 +99,9 @@ nav ul li a:hover {
   .nav-links.active {
     display: flex;
   }
-  
-  
 
   .nav-links li {
-
-    margin: 10px 20px 10px 20px;
+    margin: 10px 20px;
   }
 
   #nav-divider {
@@ -113,6 +113,7 @@ nav ul li a:hover {
   }
 }
 
+/* Feature container styles */
 .features-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -141,6 +142,7 @@ nav ul li a:hover {
   background-color: #0056b3;
 }
 
+/* Settings container styles */
 .settings-container {
   display: flex;
   flex-direction: column;
@@ -186,6 +188,7 @@ nav ul li a:hover {
   border-radius: 5px;
 }
 
+/* Task list container styles */
 .task-list-container {
   max-width: 800px;
   margin: 0 auto;
@@ -220,6 +223,7 @@ nav ul li a:hover {
   color: rgba(174, 192, 255, 0.829);
 }
 
+/* Dark mode styles */
 body.dark-mode {
   background-color: #121212;
   color: #ffffff;
@@ -243,6 +247,7 @@ body.dark-mode .features-box a:hover {
   color: #03dac5;
 }
 
+/* Add task container styles */
 #add-task-container {
   margin: 30px;
 }
@@ -261,11 +266,6 @@ body.dark-mode .features-box a:hover {
 }
 
 .dark-mode .nav-links li {
-  border: 1px solid #03dac5; 
-  background-color: #1e1e1e; 
+  border: 1px solid #03dac5;
+  background-color: #1e1e1e;
 }
-
-#completed-task-list {
-  list-style: none;
-}
-

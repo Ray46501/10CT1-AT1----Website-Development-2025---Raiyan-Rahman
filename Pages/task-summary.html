@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Master - Task Summary</title>
+    <!-- Importing  Requirements Such as CSS Style Sheets, JS scripts, bootstrap and an icon pack -->
     <link rel="stylesheet" href="../styles/styles.css">
     <script src="../scripts/script.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Styles For Progress Bar Directly in HTML File (Inline CSS) -->
     <style>
         .progress-bar-container {
-            width: 50%; /* Restrict width to 50% of the page */
-            margin: 10px auto; /* Center the progress bar */
+            width: 50%; 
+            margin: 10px auto;
             text-align: center;
         }
 
@@ -53,6 +55,7 @@
     <header>
         <h1>Task Summary</h1>
         <hr>
+        <!-- Navigation Menu -->
         <nav>
             <div id="menu-toggle" class="menu-toggle"><i class="fas fa-bars"></i></div>
             <ul id="nav-links" class="nav-links">
@@ -65,8 +68,9 @@
     </header>
 
     <hr id="nav-divider">
-
+    <!-- Display Task Stats Using Percentages and Progress Bars -->
     <main>
+        <!-- Ensures Dark Mode Works -->
         <div class="settings-container" style="display: none;">
             <div class="settings-item">
                 <label for="dark-mode-toggle"><i class="fas fa-moon"></i> Dark Mode:</label>
@@ -109,43 +113,50 @@
         <ul id="overdue-task-list" style="list-style-type: none; padding-left: 0;"></ul>
     </main>
     <hr>
+    <!-- Footer -->
     <p class="footer">Task Master by Raiyan Rahman</p>
 
     <script>
+        // Executes Script after Page is fully loaded
         document.addEventListener("DOMContentLoaded", function() {
+            // Retrieves Information On Amounts of Tasks under certain categories
             const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
             const totalTasks = tasks.length;
             const overdueTasks = tasks.filter(task => !task.completed && new Date(task.dueDate) < new Date());
-            
             const highPriorityTasks = tasks.filter(task => task.priority === "high").length;
             const mediumPriorityTasks = tasks.filter(task => task.priority === "medium").length;
             const lowPriorityTasks = tasks.filter(task => task.priority === "low").length;
             
+            // Lamda/Arrow Function that calculates percentage of total task under a certain category
             const calculatePercentage = (count) => totalTasks > 0 ? ((count / totalTasks) * 100).toFixed(0) : 0;
 
+            // Sets WIdth and Text Of Progress Bar to percentage
             const updateProgressBar = (id, percentage) => {
                 const progressBar = document.getElementById(id);
                 progressBar.style.width = `${percentage}%`;
                 progressBar.textContent = `${percentage}%`;
             };
 
+            // Updates total of tasks in the categories
             document.getElementById('total-tasks').textContent = totalTasks;
             document.getElementById('overdue-tasks').textContent = overdueTasks.length;
-            document.getElementById('overdue-percent').textContent = calculatePercentage(overdueTasks.length);
-
             document.getElementById('high-priority-tasks').textContent = highPriorityTasks;
             document.getElementById('medium-priority-tasks').textContent = mediumPriorityTasks;
             document.getElementById('low-priority-tasks').textContent = lowPriorityTasks;
 
+            // Sets text to the caluclated percentage of  total tasks under a certain category for every category
+            document.getElementById('overdue-percent').textContent = calculatePercentage(overdueTasks.length);
             document.getElementById('high-priority-percent').textContent = calculatePercentage(highPriorityTasks);
             document.getElementById('medium-priority-percent').textContent = calculatePercentage(mediumPriorityTasks);
             document.getElementById('low-priority-percent').textContent = calculatePercentage(lowPriorityTasks);
 
+            // Updates Progress Bar with percentage of  total tasks under a certain category for every category
             updateProgressBar('overdue-progress', calculatePercentage(overdueTasks.length));
             updateProgressBar('high-priority-progress', calculatePercentage(highPriorityTasks));
             updateProgressBar('medium-priority-progress', calculatePercentage(mediumPriorityTasks));
             updateProgressBar('low-priority-progress', calculatePercentage(lowPriorityTasks));
             
+            // Displays Overdue tasks and their due dates also shows a no overdue task message if there are no overdue tasks
             const overdueTaskList = document.getElementById('overdue-task-list');
             if (overdueTasks.length > 0) {
                 overdueTasks.forEach(task => {
@@ -155,7 +166,7 @@
                 });
             } else {
                 const noOverdueMessage = document.createElement('li');
-                noOverdueMessage.textContent = 'No overdue tasks';
+                noOverdueMessage.textContent = 'No overdue tasks!';
                 overdueTaskList.appendChild(noOverdueMessage);
             }
         });

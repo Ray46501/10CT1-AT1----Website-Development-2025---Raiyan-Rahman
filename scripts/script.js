@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // CLears local storage
             localStorage.clear();
             alert("All data has been reset.");
-            window.location.href = "home.html";
+            window.location.href = "index.html";
         }
     });
 });

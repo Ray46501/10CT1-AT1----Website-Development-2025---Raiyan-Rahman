@@ -169,12 +169,7 @@ nav ul li a:hover {
   font-size: 1.2rem;
 }
 
-#task-sorting {
-  padding: 5px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
+
 
 #dark-mode-toggle {
   transform: scale(1.5);
